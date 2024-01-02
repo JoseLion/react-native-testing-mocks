@@ -1,0 +1,58 @@
+{
+  "name": "react-native-test-mocks",
+  "version": "0.0.0",
+  "description": "React Native mocks for testing. Same as the internal Jest-based mocks, but decoupled of Jest dependency",
+  "repository": "git@github.com:JoseLion/react-native-test-mocks.git",
+  "homepage": "https://github.com/JoseLion/react-native-test-mocks/",
+  "author": "Jose Luis Leon <joseluis5000l@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "react-native",
+    "test",
+    "mocks"
+  ],
+  "main": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.prod.json",
+    "check": "yarn compile && yarn lint && yarn test",
+    "compile": "tsc",
+    "docs": "typedoc",
+    "lint": "eslint . --report-unused-disable-directives",
+    "test": "NODE_ENV=test mocha"
+  },
+  "packageManager": "yarn@4.0.2",
+  "devDependencies": {
+    "@assertive-ts/core": "^2.0.0",
+    "@types/eslint": "^8",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.10.6",
+    "@types/react": "^18",
+    "@types/sinon": "^17.0.2",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
+    "eslint": "^8.56.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-etc": "^2.0.3",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsdoc": "^47.0.2",
+    "eslint-plugin-sonarjs": "^0.23.0",
+    "mocha": "^10.2.0",
+    "react": "18.2.0",
+    "react-native": "^0.73.1",
+    "sinon": "^17.0.1",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.6.2",
+    "typedoc": "^0.25.6",
+    "typedoc-plugin-markdown": "^3.17.1",
+    "typedoc-plugin-merge-modules": "^5.1.0",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-native": ">=0.73.1"
+  }
+}
