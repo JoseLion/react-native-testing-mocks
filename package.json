@@ -1,9 +1,9 @@
 {
-  "name": "react-native-test-mocks",
+  "name": "react-native-testing-mocks",
   "version": "0.0.0",
   "description": "React Native mocks for testing. Same as the internal Jest-based mocks, but decoupled of Jest dependency",
-  "repository": "git@github.com:JoseLion/react-native-test-mocks.git",
-  "homepage": "https://github.com/JoseLion/react-native-test-mocks/",
+  "repository": "git@github.com:JoseLion/react-native-testing-mocks.git",
+  "homepage": "https://github.com/JoseLion/react-native-testing-mocks/",
   "author": "Jose Luis Leon <joseluis5000l@gmail.com>",
   "license": "MIT",
   "keywords": [
