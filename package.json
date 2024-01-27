@@ -8,8 +8,10 @@
   "license": "MIT",
   "keywords": [
     "react-native",
+    "testing",
     "test",
-    "mocks"
+    "mocks",
+    "mock"
   ],
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
@@ -32,7 +34,6 @@
   "packageManager": "yarn@4.0.2",
   "dependencies": {
     "@babel/core": "^7.23.9",
-    "@babel/preset-react": "^7.23.3",
     "@babel/register": "^7.23.7",
     "@react-native/babel-preset": "^0.73.20",
     "babel-plugin-module-resolver": "^5.0.0",
@@ -45,7 +46,7 @@
     "@types/babel__register": "^7.17.3",
     "@types/eslint": "^8.56.2",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.7",
+    "@types/node": "^20.11.8",
     "@types/react": "^18.2.48",
     "@types/react-test-renderer": "^18.0.7",
     "@types/sinon": "^17.0.3",
@@ -72,5 +73,17 @@
   "peerDependencies": {
     "react": ">=18.2.0",
     "react-native": ">=0.73.1"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": false
+    },
+    "react-native": {
+      "optional": false
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }
