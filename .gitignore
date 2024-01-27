@@ -10,6 +10,7 @@ node_modules/
 # Generated
 build/
 dist/
+*.tgz
 
 # VSCode
 .vscode/
