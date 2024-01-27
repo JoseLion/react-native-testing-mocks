@@ -6828,9 +6828,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-test-mocks@workspace:.":
+"react-native-testing-mocks@workspace:.":
   version: 0.0.0-use.local
-  resolution: "react-native-test-mocks@workspace:."
+  resolution: "react-native-testing-mocks@workspace:."
   dependencies:
     "@assertive-ts/core": "npm:^2.0.0"
     "@babel/core": "npm:^7.23.9"
