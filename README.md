@@ -20,6 +20,24 @@ React Native solves this problem through [Jest](https://jestjs.io/). They provid
 
 This library aims to solve this problem. It provides mocks just as React Native does, but in much faster/simpler way and without the need of Jest. It also transforms the React Native Flow code on the fly, and solves the haste map modules so don't have to worry about that either. Transforming on the fly takes a few seconds the first time, but then it get's cached and it gets 6x faster. Overall, this library makes it possible to test React Native in other frameworks, like [Mocha.js](https://mochajs.org/), etc.
 
+## Requirements
+
+- **Node.js:** >=18
+- **react:** >=18.2.0
+- **react-native:** ">=0.73.2
+
+## Install
+
+With NPM:
+```
+npm i --save-dev react-native-testing-mocks
+```
+
+With Yarn:
+```
+yarn add --dev react-native-testing-mocks
+```
+
 ## Usage
 
 To register the testing mocks you just need to load the effect in a file that runs before all tests:

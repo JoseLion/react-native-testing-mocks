@@ -8853,7 +8853,7 @@ __metadata:
     typescript: "npm:^5.3.3"
   peerDependencies:
     react: ">=18.2.0"
-    react-native: ">=0.73.1"
+    react-native: ">=0.73.2"
   peerDependenciesMeta:
     react:
       optional: false
