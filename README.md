@@ -1,6 +1,11 @@
 [![CI](https://github.com/JoseLion/react-native-testing-mocks/actions/workflows/ci.yml/badge.svg)](https://github.com/JoseLion/react-native-testing-mocks/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/JoseLion/react-native-testing-mocks/actions/workflows/codeql.yml/badge.svg)](https://github.com/JoseLion/react-native-testing-mocks/actions/workflows/codeql.yml)
 [![Release](https://github.com/JoseLion/react-native-testing-mocks/actions/workflows/release.yml/badge.svg)](https://github.com/JoseLion/react-native-testing-mocks/actions/workflows/release.yml)
+[![NPM version](https://img.shields.io/npm/v/react-native-testing-mocks?logo=npm)](https://www.npmjs.com/package/react-native-testing-mocks)
+[![NPM bundle size](https://img.shields.io/bundlephobia/min/react-native-testing-mocks)](https://www.npmjs.com/package/react-native-testing-mocks)
+[![NPM downloads](https://img.shields.io/npm/dm/react-native-testing-mocks)](https://www.npmjs.com/package/react-native-testing-mocks)
+[![NPM license](https://img.shields.io/npm/l/react-native-testing-mocks)](https://github.com/JoseLion/react-native-testing-mocks/blob/main/LICENSE)
+[![GitHub Release Date](https://img.shields.io/github/release-date/JoseLion/react-native-testing-mocks)](https://github.com/JoseLion/react-native-testing-mocks/releases)
 [![Known Vulnerabilities](https://snyk.io/test/github/JoseLion/react-native-testing-mocks/badge.svg)](https://snyk.io/test/github/JoseLion/react-native-testing-mocks)
 
 # react-native-testing-mocks
