@@ -20,6 +20,14 @@ React Native solves this problem through [Jest](https://jestjs.io/). They provid
 
 This library aims to solve this problem. It provides mocks just as React Native does, but in much faster/simpler way and without the need of Jest. It also transforms the React Native Flow code on the fly, and solves the haste map modules so don't have to worry about that either. Transforming on the fly takes a few seconds the first time, but then it get's cached and it gets 6x faster. Overall, this library makes it possible to test React Native in other frameworks, like [Mocha.js](https://mochajs.org/), etc.
 
+### Features
+
+- Faster and simpler than Jest transforming all your code.
+- Compatible with [@testing-library/react-native](https://callstack.github.io/react-native-testing-library/) renderer.
+- Large range of compatibility. Uses the same approach as React Native's original mocks.
+- Decoupled from Jest. Testing framework agnostic.
+- Easy to use/setup.
+
 ## Requirements
 
 - **Node.js:** >=18
@@ -50,7 +58,7 @@ import "react-native-testing-mocks/register";
 // ...rest of your setup code
 ```
 
-### With Mocha.js
+### Mocha.js Example
 
 Some frameworks like Mocha.js gives you a place to load setup modules. In Mocha you can do that with the `--require` CLI option, or using the `.mocharc.json` file:
 
