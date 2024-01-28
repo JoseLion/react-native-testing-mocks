@@ -27,7 +27,6 @@
     "build": "tsc -p tsconfig.prod.json",
     "check": "yarn compile && yarn lint && yarn test",
     "compile": "tsc",
-    "docs": "typedoc",
     "lint": "eslint . --report-unused-disable-directives",
     "test": "NODE_ENV=test mocha"
   },
@@ -65,9 +64,6 @@
     "sinon": "^17.0.1",
     "ts-node": "^10.9.2",
     "tslib": "^2.6.2",
-    "typedoc": "^0.25.7",
-    "typedoc-plugin-markdown": "^3.17.1",
-    "typedoc-plugin-merge-modules": "^5.1.0",
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
