@@ -6,10 +6,16 @@ import {
   ReactNode,
   createElement,
 } from "react";
+import type { NativeMethods } from "react-native";
+
+import type { ScrollViewMethods } from "../lib/Components/ScrollView";
+import type { TextInputMethods } from "../lib/Components/TextInput";
+
+export type AllNativeMethods = NativeMethods | ScrollViewMethods | TextInputMethods;
 
 export function mockComponent<P, C extends ComponentClass<PropsWithChildren<P>>>(
   RealComponent: C,
-  instanceMethods?: object | null,
+  instanceMethods?: AllNativeMethods,
 ): C {
   const SuperClass: ComponentClass<PropsWithChildren<P>> = typeof RealComponent === "function"
     ? RealComponent

@@ -1,6 +1,6 @@
 import { View } from "react-native";
 
 import { mockComponent } from "../../helpers/mockComponent";
-import { MockNativeMethods } from "../../helpers/mockNativeMethods";
+import { nativeMethodsMock } from "../../helpers/nativeMethodsMock";
 
-export const ViewMock = mockComponent(View, MockNativeMethods);
+export const ViewMock = mockComponent(View, nativeMethodsMock);

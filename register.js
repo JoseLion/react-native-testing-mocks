@@ -1,5 +1,5 @@
 const start = Date.now();
-require("./dist/main");
+require("./dist/register");
 
 const end = Date.now();
 const diff = (end - start) / 1000;

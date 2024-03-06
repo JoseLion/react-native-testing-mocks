@@ -37,7 +37,8 @@
     "@babel/register": "^7.23.7",
     "@react-native/babel-preset": "^0.73.21",
     "babel-plugin-module-resolver": "^5.0.0",
-    "dot-prop-immutable": "^2.1.1"
+    "dot-prop-immutable": "^2.1.1",
+    "ts-pattern": "^5.0.8"
   },
   "devDependencies": {
     "@assertive-ts/core": "^2.1.0",
