@@ -8881,6 +8881,7 @@ __metadata:
     semantic-release-yarn: "npm:^3.0.2"
     sinon: "npm:^17.0.1"
     ts-node: "npm:^10.9.2"
+    ts-pattern: "npm:^5.0.8"
     tslib: "npm:^2.6.2"
     typescript: "npm:^5.3.3"
   peerDependencies:
@@ -10373,6 +10374,13 @@ __metadata:
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
   checksum: 10/a91a15b3c9f76ac462f006fa88b6bfa528130dcfb849dd7ef7f9d640832ab681e235b8a2bc58ecde42f72851cc1d5d4e22c901b0c11aa51001ea1d395074b794
+  languageName: node
+  linkType: hard
+
+"ts-pattern@npm:^5.0.8":
+  version: 5.0.8
+  resolution: "ts-pattern@npm:5.0.8"
+  checksum: 10/a57f7def89c0fae3065d56a1fb94510688910b4b99610a41b2b3df277d92af17c26a4a65717e7d7c3ac085258d20144f2f5a748d860c043609aea29cff7a43ab
   languageName: node
   linkType: hard
 

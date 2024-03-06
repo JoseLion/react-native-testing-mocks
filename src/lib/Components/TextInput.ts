@@ -1,12 +1,20 @@
-import { TextInput } from "react-native";
+import { ElementRef } from "react";
+import { HostComponent, NativeMethods, TextInput } from "react-native";
 
 import { noop } from "../../helpers/commons";
 import { mockComponent } from "../../helpers/mockComponent";
-import { MockNativeMethods } from "../../helpers/mockNativeMethods";
+import { nativeMethodsMock } from "../../helpers/nativeMethodsMock";
 
-export const TextInputMock = mockComponent(TextInput, {
-  ...MockNativeMethods,
+export type TextInputMethods = NativeMethods | TextInput & {
+  getNativeRef: () => ElementRef<HostComponent<unknown>> | undefined;
+};
+
+export const textInputMethodsMock: TextInputMethods = {
+  ...nativeMethodsMock,
   clear: noop,
-  getNativeRef: noop,
-  isFocused: noop,
-});
+  getNativeRef: () => undefined,
+  isFocused: () => false,
+  setSelection: noop,
+};
+
+export const TextInputMock = mockComponent(TextInput, textInputMethodsMock);
