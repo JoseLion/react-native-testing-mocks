@@ -8,25 +8,37 @@
 [![GitHub Release Date](https://img.shields.io/github/release-date/JoseLion/react-native-testing-mocks)](https://github.com/JoseLion/react-native-testing-mocks/releases)
 [![Known Vulnerabilities](https://snyk.io/test/github/JoseLion/react-native-testing-mocks/badge.svg)](https://snyk.io/test/github/JoseLion/react-native-testing-mocks)
 
-# react-native-testing-mocks
+# React Native Testing Mocks
 
-React Native mocks for testing. Same as the internal Jest-based mocks, but simpler, faster, and decoupled of the Jest dependency.
+React Native mocks for testing. It is the same as the internal Jest-based mocks but is more straightforward, faster, and decoupled from the Jest dependency.
 
-## Why?
+## Motivation
 
-Testing on React Native is hard. This is mainly because of some modules and components which communicate directly to native code (iOS, Android, etc.) But in a testing environment like Node.js that native code is not available. The second reason testing is hard is beacause React Native code is not deliverd in a distributable manner. The code is mostly written in Flow, and there're a few modules that need to go throgh a haste map to be resolve (modules with `.ios.js` and `.android.js` prefix, but invoked without the prefix). React Native package does not privide a CommonJS transpiled version, so we can't just require the modules on a testing environment.
+Testing on React Native is not such a trivial task, mainly because some modules and components communicate directly to native code (iOS, Android, etc.) However, in a testing environment like Node.js, the native code is unavailable. Also, React Native code is not delivered in a distributable manner -- most of the code in Flow, and some modules need to go through a haste map resolver (modules with `.ios.js` and `.android.js` prefix, required without the prefix).
 
-React Native solves this problem through [Jest](https://jestjs.io/). They provide Jest mocks for all those native modules, and because Jest transpiles the code before running it, they ensure to process Flow code and solve the haste map. This configuration is exported as a [Jest preset](https://github.com/facebook/react-native/blob/main/packages/react-native/jest-preset.js) t be used on your `jest.config.js` file. But what if you don't want to use Jest as your testing framework? What if you don't use Babel for testing, because you use TypeScript and `ts-node`? Is it even possible to test React Native code without Jest?
+React Native solves this problem with [Jest](https://jestjs.io/), providing Jest mocks for native modules. Jest transpiles the code before running it, so there's also a Flow preset in the configuration and some settings to solve the haste map. React Native then exports this configuration as a [Jest preset](https://github.com/facebook/react-native/blob/main/packages/react-native/jest-preset.js) for developers to use with their Jest configuration.
 
-This library aims to solve this problem. It provides mocks just as React Native does, but in much faster/simpler way and without the need of Jest. It also transforms the React Native Flow code on the fly, and solves the haste map modules so don't have to worry about that either. Transforming on the fly takes a few seconds the first time, but then it get's cached and it gets 6x faster. Overall, this library makes it possible to test React Native in other frameworks, like [Mocha.js](https://mochajs.org/), etc.
+But what if you don't want to use Jest as your testing framework? What if you don't need Babel because you already have TypeScript, and your test can run on [ts-node](https://typestrong.org/ts-node/)? Is it even possible to test React Native code without Jest? This package aims to solve this problem by providing mocks the same way as React Native does but without Jest dependency in the middle. It solves the "haste map" modules and transforms Flow code on the fly, caching the result so subsequent executions are 6x faster. Overall, the package makes it possible to test React Native in other frameworks, like [Mocha.js](https://mochajs.org/).
+
+## Table of contents
+
+- [Features](#features)
+- [Requirements](#requirements)
+- [Install](#install)
+- [Usage](#usage)
+  - [Mocha.js example](#mochajs-example)
+  - [Mocking native methods](#mocking-native-methods)
+- [Contributing](#contributing)
+- [License](#license)
 
 ### Features
 
-- Faster and simpler than Jest transforming all your code.
+- Fast and simple. Transforms just what it needs, when it needs.
 - Compatible with [@testing-library/react-native](https://callstack.github.io/react-native-testing-library/) renderer.
-- Large range of compatibility. Uses the same approach as React Native's original mocks.
-- Decoupled from Jest. Testing framework agnostic.
-- Easy to use/setup.
+- Extensive range of compatibility by imitating React Native's original mocks.
+- Testing framework agnostic.
+- Easy to use and set up.
+- It provides a function to add behaviors to the native methods of Native Components.
 
 ## Requirements
 
@@ -48,7 +60,7 @@ yarn add --dev react-native-testing-mocks
 
 ## Usage
 
-To register the testing mocks you just need to load the effect in a file that runs before all tests:
+To register the testing mocks, load the effect in a file that runs before all tests:
 
 ```ts
 // setup.ts
@@ -60,7 +72,13 @@ import "react-native-testing-mocks/register";
 
 ### Mocha.js Example
 
-Some frameworks like Mocha.js gives you a place to load setup modules. In Mocha you can do that with the `--require` CLI option, or using the `.mocharc.json` file:
+Some frameworks also provide mechanisms to load setup modules. In Mocha.js, you can use the `--require` CLI option:
+
+```bash
+mocha --require react-native-testing-mocks/register
+```
+
+Or you can add it to the `.mocharc.json` file:
 
 ```json
 {
@@ -77,13 +95,33 @@ Some frameworks like Mocha.js gives you a place to load setup modules. In Mocha 
 }
 ```
 
-## Something's missing?
+### Mocking native methods
 
-Suggestions are always welcome! Please create an [issue](https://github.com/JoseLion/react-native-testing-mocks/issues/new) describing the request, feature, or bug. We'll try to look into it as soon as possible 🙂
+Native components like `View`, `ScrollView`, or `TextInput` have specific instance methods that help communicate between JS and native code. Because there's no native code on tests, we must mock these native methods somehow. By default, the methods mocks are just a "no-operation" function, meaning nothing happens whenever a component invokes them in a test environment.
 
-## Contributions
+However, your components may be using these methods in their implementation, and it'd be good to be able to test that as well. _React Native Testing Mocks_ provides the `mockNative` function that allows you to change the default native methods mocks on native components. Let's say your component uses the `.measure` instance method of a `<View>` component. Before you run your test, you can change the mocked behavior of `.measure` like so:
 
-Contributions are very welcome! To do so, please fork this repository and open a Pull Request to the `main` branch.
+```ts
+mockNative("View", { measure: callback => { callback(10, 10, 100, 100) } });
+```
+
+Now, whenever a test invokes the `.measure` method of any `View` instance, it will use your implementation instead. Remember that mocks persist until the program finishes, but you can restore the original behavior called `restoreNativeMocks()`. You can add the method to a before hook to ensure restoration after each test:
+
+```ts
+afterEach(() => {
+  restoreNativeMocks();
+});
+```
+
+## Contributing
+
+### Something's missing?
+
+Suggestions are always welcome! Please create an [issue](https://github.com/JoseLion/react-native-testing-mocks/issues/new) describing the request, feature, or bug. Opening meaningful issues is as helpful as opening Pull Requests.
+
+### Contributions
+
+Pull Requests are very welcome as well! Please fork this repository and open your PR against the `main` branch.
 
 ## License
 
