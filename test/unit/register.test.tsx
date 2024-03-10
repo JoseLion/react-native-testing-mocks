@@ -4,6 +4,7 @@ import { expect } from "@assertive-ts/core";
 import { render, waitFor, userEvent } from "@testing-library/react-native";
 import { ReactElement, useCallback, useRef, useState } from "react";
 import { ActivityIndicator, Animated, Button, Image, Modal, ScrollView, Text, TextInput, View } from "react-native";
+import { Rect, Svg } from "react-native-svg";
 
 function TestScreen(): ReactElement {
 
@@ -45,6 +46,15 @@ function TestScreen(): ReactElement {
           <Text>{"foo"}</Text>
         </Modal>
       </View>
+      <Svg testID="svg-test">
+        <Rect
+          x={0}
+          y={0}
+          width={100}
+          height={100}
+          fill="red"
+        />
+      </Svg>
       <Button title="Click Me!" onPress={animateView} />
       <Animated.View style={{ marginLeft: enterLeft }}>
         <Text>{`Animated view: ${animated}`}</Text>
@@ -61,6 +71,7 @@ describe("[Unit] register.test.ts", () => {
         getByPlaceholderText,
         getByDisplayValue,
         getByLabelText,
+        getByTestId,
         findByText,
       } = render(<TestScreen />);
 
@@ -71,6 +82,7 @@ describe("[Unit] register.test.ts", () => {
       expect(getByLabelText("Profile picture")).toBePresent();
       expect(getByText("I'm on a modal")).toBePresent();
       expect(() => getByText("foo")).toThrowError();
+      expect(getByTestId("svg-test")).toBePresent();
       expect(getByText("Animated view: false")).toBePresent();
 
       const clickMeButton = await findByText("Click Me!");

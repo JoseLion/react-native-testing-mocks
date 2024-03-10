@@ -2,7 +2,7 @@ import register from "@babel/register";
 
 register({
   cache: true,
-  only: [/node_modules[/\\](react-native|@react-native).*/],
+  only: [/node_modules[/\\](react-native|@react-native)[/\\]/],
   plugins: [
     ["module-resolver", {
       resolvePath(sourcePath: string) {
