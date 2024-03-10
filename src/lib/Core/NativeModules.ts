@@ -60,7 +60,7 @@ export const NativeModulesMock = {
   },
   PlatformConstants: {
     getConstants() {
-      return {};
+      return { isTesting: true };
     },
   },
   PushNotificationManager: {

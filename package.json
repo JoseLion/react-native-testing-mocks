@@ -29,7 +29,7 @@
     "compile": "tsc",
     "lint": "eslint . --report-unused-disable-directives",
     "release": "semantic-release",
-    "test": "NODE_ENV=test mocha"
+    "test": "RNTL_SKIP_AUTO_DETECT_FAKE_TIMERS=true NODE_ENV=test mocha"
   },
   "packageManager": "yarn@4.1.1",
   "dependencies": {
