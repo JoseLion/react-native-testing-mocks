@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import path from "path";
 
 /**
@@ -9,15 +8,12 @@ export function noop(): void {
 }
 
 /**
- * Replaces a module with a given `exports` value or another module path.
+ * Replaces a Module with a given `exports` value or another module path.
  *
  * @param modulePath the path to the module
- * @param other the exports to replace or another module path
+ * @param exports the exports to replace
  */
-export function replace<T>(modulePath: string, other: T | string): void {
-  const exports = typeof other === "string"
-    ? require(other) as T
-    : other;
+export function replace<T>(modulePath: string, exports: T): void {
   const id = resolveId(modulePath);
 
   require.cache[id] = {
@@ -32,6 +28,16 @@ export function replace<T>(modulePath: string, other: T | string): void {
     paths: [],
     require,
   };
+}
+
+/**
+ * Replaces am ESModule with a given `exports` value or another module path.
+ *
+ * @param modulePath the path to the ESModule
+ * @param defaultExport the default export to replace
+ */
+export function replaceEsm<T>(modulePath: string, defaultExport: T): void {
+  replace(modulePath, { __esModule: true, default: defaultExport });
 }
 
 function resolveId(modulePath: string): string {
