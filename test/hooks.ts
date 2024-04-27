@@ -5,5 +5,11 @@ export function mochaHooks(): Mocha.RootHookObject {
     afterEach() {
       Sinon.restore();
     },
+    beforeEach() {
+      Sinon.useFakeTimers({
+        advanceTimeDelta: 0,
+        shouldAdvanceTime: true,
+      });
+    },
   };
 }

@@ -1,5 +1,3 @@
-import "../../../src/register";
-
 import { expect } from "@assertive-ts/core";
 import { render } from "@testing-library/react-native";
 import { ReactElement, useEffect, useRef, useState } from "react";

@@ -1,5 +1,3 @@
-import "../../src/register";
-
 import { expect } from "@assertive-ts/core";
 import { render, waitFor, userEvent } from "@testing-library/react-native";
 import { ReactElement, useCallback, useRef, useState } from "react";
@@ -9,6 +7,7 @@ import { Rect, Svg } from "react-native-svg";
 function TestScreen(): ReactElement {
 
   const [animated, setAnimated] = useState(false);
+  const [greet, setGreet] = useState("Hello!");
 
   const enterLeft = useRef(new Animated.Value(100, { useNativeDriver: true })).current;
   const movePoint = useRef(new Animated.ValueXY({ x: 0, y: 0 }, { useNativeDriver: true })).current;
@@ -30,6 +29,10 @@ function TestScreen(): ReactElement {
     Animated.parallel([enterAnim, moveAnim]).start(({ finished }) => {
       setAnimated(finished);
     });
+  }, []);
+
+  const changeGreet = useCallback(() => {
+    setGreet("I said hello!!!");
   }, []);
 
   return (
@@ -59,6 +62,8 @@ function TestScreen(): ReactElement {
       <Animated.View style={{ marginLeft: enterLeft }}>
         <Text>{`Animated view: ${animated}`}</Text>
       </Animated.View>
+      <Button title="Long press me!" onPress={changeGreet} />
+      <Text>{greet}</Text>
     </ScrollView>
   );
 }
@@ -90,6 +95,14 @@ describe("[Unit] register.test.ts", () => {
       await userEvent.press(clickMeButton);
 
       await waitFor(() => getByText("Animated view: true"));
+
+      const longPressButton = await findByText("Long press me!");
+
+      expect(getByText("Hello!")).toBePresent();
+
+      await userEvent.longPress(longPressButton);
+
+      await waitFor(() => getByText("I said hello!!!"));
     });
   });
 });
