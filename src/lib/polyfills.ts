@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import "@react-native/js-polyfills/Object.es8";
 import "@react-native/js-polyfills/error-guard";
 
 Object.defineProperties(global, {
@@ -13,6 +12,12 @@ Object.defineProperties(global, {
     configurable: true,
     enumerable: true,
     value: clearTimeout,
+    writable: true,
+  },
+  nativeFabricUIManager: {
+    configurable: true,
+    enumerable: true,
+    value: {},
     writable: true,
   },
   performance: {
