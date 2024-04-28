@@ -31,8 +31,6 @@ export const UIManagerMock = {
   },
   measure: noop,
   manageChildren: noop,
-  removeSubviewsFromContainerWithID: noop,
-  replaceExistingNonRootView: noop,
   setChildren: noop,
   updateView: noop,
   AndroidDrawerLayout: {

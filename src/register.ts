@@ -9,7 +9,6 @@ import { ActivityIndicatorMock } from "./lib/Components/ActivityIndicator";
 import { AppStateMock } from "./lib/Components/AppState";
 import { ClipboardMock } from "./lib/Components/Clipboard";
 import { ImageMock } from "./lib/Components/Image";
-import { LinkingMock } from "./lib/Components/Linking";
 import { ModalMock } from "./lib/Components/Modal";
 import { RefreshControlMock } from "./lib/Components/RefreshControl";
 import { ScrollViewMock } from "./lib/Components/ScrollView";
@@ -29,7 +28,6 @@ replace("react-native/Libraries/Components/RefreshControl/RefreshControl", Refre
 replace("react-native/Libraries/Components/ScrollView/ScrollView", ScrollViewMock);
 replaceEsm("react-native/Libraries/Components/ActivityIndicator/ActivityIndicator", ActivityIndicatorMock);
 replace("react-native/Libraries/AppState/AppState", AppStateMock);
-replace("react-native/Libraries/Linking/Linking", LinkingMock);
 replace("react-native/Libraries/Vibration/Vibration", VibrationMock);
 replace("react-native/Libraries/Components/View/View", ViewMock);
 replace("react-native/Libraries/Components/View/ViewNativeComponent", ViewNativeComponentMock);
