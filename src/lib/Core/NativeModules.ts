@@ -42,7 +42,10 @@ export const NativeModulesMock = {
   },
   ImageLoader: {
     getSize: () => Promise.resolve([320, 240]),
+    getSizeWithHeaders: () => Promise.resolve({ height: 222, width: 333 }),
     prefetchImage: noop,
+    prefetchImageWithMetadata: noop,
+    queryCache: noop,
   },
   ImageViewManager: {
     getSize: (_uri: string, success: CB) => process.nextTick(() => success(320, 240)),

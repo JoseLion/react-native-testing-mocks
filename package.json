@@ -15,14 +15,14 @@
   ],
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
-  "engines": {
-    "node": ">=18"
-  },
   "files": [
     "dist/",
     "src/",
     "register.js"
   ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.prod.json",
     "check": "yarn compile && yarn lint && yarn test",
@@ -31,29 +31,29 @@
     "release": "semantic-release",
     "test": "NODE_ENV=test mocha"
   },
-  "packageManager": "yarn@4.1.1",
+  "packageManager": "yarn@4.3.1",
   "dependencies": {
-    "@babel/core": "^7.24.4",
-    "@babel/register": "^7.23.7",
+    "@babel/core": "^7.24.7",
+    "@babel/register": "^7.24.6",
     "babel-plugin-module-resolver": "^5.0.2",
     "dot-prop-immutable": "^2.1.1",
-    "ts-pattern": "^5.1.1"
+    "ts-pattern": "^5.2.0"
   },
   "devDependencies": {
     "@assertive-ts/core": "^2.1.0",
     "@eslint/compat": "^1.1.0",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.5.0",
-    "@react-native/babel-preset": "^0.74.81",
+    "@react-native/babel-preset": "^0.74.84",
     "@stylistic/eslint-plugin": "^2.2.2",
-    "@testing-library/react-native": "^12.4.5",
+    "@testing-library/react-native": "^12.5.1",
     "@types/babel__core": "^7.20.5",
     "@types/babel__register": "^7.17.3",
     "@types/eslint__eslintrc": "^2.1.1",
     "@types/eslint__js": "^8.42.3",
-    "@types/mocha": "^10.0.6",
-    "@types/node": "^20.12.7",
-    "@types/react": "^18.3.1",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "^20.14.8",
+    "@types/react": "^18.3.3",
     "@types/react-test-renderer": "^18.3.0",
     "@types/sinon": "^17.0.3",
     "eslint": "^9.5.0",
@@ -66,17 +66,17 @@
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-sonarjs": "^1.0.3",
     "globals": "^15.6.0",
-    "mocha": "^10.4.0",
+    "mocha": "^10.5.0",
     "react": "18.3.1",
-    "react-native": "^0.74.0",
-    "react-native-svg": "^15.2.0",
+    "react-native": "^0.74.2",
+    "react-native-svg": "^15.3.0",
     "react-test-renderer": "^18.3.1",
-    "semantic-release": "^23.0.8",
+    "semantic-release": "^24.0.0",
     "semantic-release-yarn": "^3.0.2",
-    "sinon": "^17.0.1",
+    "sinon": "^18.0.0",
     "ts-node": "^10.9.2",
-    "tslib": "^2.6.2",
-    "typescript": "^5.4.5",
+    "tslib": "^2.6.3",
+    "typescript": "^5.5.2",
     "typescript-eslint": "^7.14.1"
   },
   "peerDependencies": {
