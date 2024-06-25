@@ -1,11 +1,10 @@
 import { expect } from "@assertive-ts/core";
-import { render, waitFor, userEvent } from "@testing-library/react-native";
-import { ReactElement, useCallback, useRef, useState } from "react";
+import { render, userEvent, waitFor } from "@testing-library/react-native";
+import { type ReactElement, useCallback, useRef, useState } from "react";
 import { ActivityIndicator, Animated, Button, Image, Modal, ScrollView, Text, TextInput, View } from "react-native";
 import { Rect, Svg } from "react-native-svg";
 
 function TestScreen(): ReactElement {
-
   const [animated, setAnimated] = useState(false);
   const [greet, setGreet] = useState("Hello!");
 

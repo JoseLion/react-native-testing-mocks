@@ -1,11 +1,11 @@
 import { get } from "dot-prop-immutable";
-import { Component, ComponentClass, PropsWithChildren, ReactNode } from "react";
+
+import type { Component, ComponentClass, PropsWithChildren, ReactNode } from "react";
 
 export function mockModal<P, C extends typeof Component<P>>(Base: C): C {
   const BaseComponent = Base as ComponentClass<PropsWithChildren<P>>;
 
   class Mock extends BaseComponent {
-
     public render(): ReactNode {
       if (get(this.props, "visible") === false) {
         return null;

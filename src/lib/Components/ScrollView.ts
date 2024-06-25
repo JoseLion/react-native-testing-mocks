@@ -1,6 +1,6 @@
 /* eslint-disable sort-keys */
-import { ElementRef, PropsWithChildren, ReactNode, createElement } from "react";
-import { HostComponent, NativeMethods, ScrollView, View, requireNativeComponent } from "react-native";
+import { type ElementRef, type PropsWithChildren, type ReactNode, createElement } from "react";
+import { type HostComponent, type NativeMethods, ScrollView, View, requireNativeComponent } from "react-native";
 
 import { noop } from "../../helpers/commons";
 import { mockComponent } from "../../helpers/mockComponent";
@@ -59,7 +59,6 @@ const RCTScrollView = requireNativeComponent("RCTScrollView");
 const BaseMock = mockComponent(ScrollView, scrollViewMethodsMock);
 
 export class ScrollViewMock<P> extends BaseMock {
-
   public constructor(props: PropsWithChildren<P>) {
     super(props);
   }
