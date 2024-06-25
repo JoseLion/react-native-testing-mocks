@@ -1,8 +1,9 @@
 /* eslint-disable camelcase */
-import { ComponentClass } from "react";
 
 import { noop } from "../../helpers/commons";
 import { mockNativeComponent } from "../../helpers/mockNativeComponent";
+
+import type { ComponentClass } from "react";
 
 export const NativeComponentRegistryMock = {
   get: (name: string): ComponentClass => mockNativeComponent(name),

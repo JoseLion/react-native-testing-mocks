@@ -1,8 +1,9 @@
-import { ComponentClass } from "react";
 import { Image } from "react-native";
 
 import { noop } from "../../helpers/commons";
 import { mockComponent } from "../../helpers/mockComponent";
+
+import type { ComponentClass } from "react";
 
 export type ImageMethods = Partial<typeof Image>;
 

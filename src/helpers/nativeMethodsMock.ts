@@ -1,6 +1,6 @@
-import { NativeMethods } from "react-native";
-
 import { noop } from "./commons";
+
+import type { NativeMethods } from "react-native";
 
 export const nativeMethodsMock: NativeMethods = {
   blur: noop,

@@ -1,15 +1,15 @@
 import { get } from "dot-prop-immutable";
 import {
   Component,
-  ComponentClass,
-  PropsWithChildren,
-  ReactNode,
+  type ComponentClass,
+  type PropsWithChildren,
+  type ReactNode,
   createElement,
 } from "react";
-import type { NativeMethods } from "react-native";
 
 import type { ScrollViewMethods } from "../lib/Components/ScrollView";
 import type { TextInputMethods } from "../lib/Components/TextInput";
+import type { NativeMethods } from "react-native";
 
 export type AllNativeMethods = NativeMethods | ScrollViewMethods | TextInputMethods;
 
@@ -28,7 +28,6 @@ export function mockComponent<P, C extends ComponentClass<PropsWithChildren<P>>>
   const nameWithoutPrefix = name.replace(/^(RCT|RK)/, "");
 
   class Mock extends SuperClass {
-
     public static displayName = "Component";
 
     public render(): ReactNode {

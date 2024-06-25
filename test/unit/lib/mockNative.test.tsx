@@ -1,12 +1,11 @@
 import { expect } from "@assertive-ts/core";
 import { render } from "@testing-library/react-native";
-import { ReactElement, useEffect, useRef, useState } from "react";
+import { type ReactElement, useEffect, useRef, useState } from "react";
 import { Text, View } from "react-native";
 
 import { mockNative, restoreNativeMocks } from "../../../src/lib/mockNative";
 
 function TestScreen(): ReactElement {
-
   const [widthValue, setWidthValue] = useState(0);
   const viewRef = useRef<View>(null);
 

@@ -1,7 +1,6 @@
-import { Component, PropsWithChildren, ReactNode, createElement } from "react";
+import { Component, type PropsWithChildren, type ReactNode, createElement } from "react";
 
 class Mock extends Component<PropsWithChildren> {
-
   public static displayName = "View";
 
   public constructor(props: PropsWithChildren) {

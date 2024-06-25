@@ -6,8 +6,7 @@ interface ValueXY {
 }
 
 export class AnimatedValueXYMock extends Animated.ValueXY {
-
-  public constructor (
+  public constructor(
     value: ValueXY,
     config: Animated.AnimatedConfig = { useNativeDriver: false },
   ) {

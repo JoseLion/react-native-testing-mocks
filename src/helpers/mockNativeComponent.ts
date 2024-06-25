@@ -1,10 +1,9 @@
-import { Component, ComponentClass, PropsWithChildren, ReactNode, createElement } from "react";
+import { Component, type ComponentClass, type PropsWithChildren, type ReactNode, createElement } from "react";
 
 const native = { tag: 1 };
 
 export function mockNativeComponent(viewName: string): ComponentClass {
   return class extends Component<PropsWithChildren<unknown>> {
-
     public static displayName = viewName === "RCTView" ? "View" : viewName;
 
     protected _nativeTag = native.tag++;
