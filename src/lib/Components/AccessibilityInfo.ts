@@ -2,7 +2,7 @@
 import { noop } from "../../helpers/commons";
 
 export const AccessibilityInfoMock = {
-  addEventListener: noop,
+  addEventListener: (): unknown => ({ remove: noop }),
   announceForAccessibility: noop,
   isAccessibilityServiceEnabled: noop,
   isBoldTextEnabled: noop,
