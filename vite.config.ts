@@ -8,6 +8,7 @@ export default defineConfig({
         load: "./src/load.ts",
         main: "./src/main.ts",
         register: "./src/register.ts",
+        vitest: "./src/vitest/plugin.ts",
       },
       fileName: (_, entry) => entry,
       formats: ["cjs", "es"],
@@ -25,6 +26,7 @@ export default defineConfig({
       compilerOptions: {
         emitDeclarationOnly: true,
         incremental: false,
+        rootDir: "./src",
       },
       include: ["src/**", "typings/**"],
     }),

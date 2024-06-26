@@ -32,6 +32,10 @@
       "types": "./dist/register.d.ts",
       "default": "./dist/register.js"
     },
+    "./vitest": {
+      "types": "./dist/vitest/plugin.d.ts",
+      "default": "./dist/vitest.js"
+    },
     "./package.json": "./package.json"
   },
   "files": [
