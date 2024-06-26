@@ -13,19 +13,40 @@
     "mocks",
     "mock"
   ],
-  "main": "./dist/main.js",
+  "type": "module",
+  "source": "./src/main.ts",
+  "main": "./dist/main.cjs",
+  "module": "./dist/main.js",
   "types": "./dist/main.d.ts",
+  "sideEffects": true,
+  "exports": {
+    ".": {
+      "import": "./dist/main.js",
+      "require": "./dist/main.cjs",
+      "types": "./dist/main.d.ts",
+      "default": "./dist/main.js"
+    },
+    "./register": {
+      "import": "./register.js",
+      "require": "./register.cjs",
+      "types": "./dist/register.d.ts",
+      "default": "./register.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
-    "dist/",
-    "src/",
-    "register.js"
+    "./dist",
+    "./src/",
+    "./package.json",
+    "./register.cjs",
+    "./register.js"
   ],
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.prod.json",
-    "check": "yarn compile && yarn lint && yarn test",
+    "build": "vite build",
+    "check": "yarn build && yarn compile && yarn lint && yarn test",
     "compile": "tsc",
     "lint": "eslint .",
     "release": "semantic-release",
@@ -37,6 +58,8 @@
     "@babel/register": "^7.24.6",
     "babel-plugin-module-resolver": "^5.0.2",
     "dot-prop-immutable": "^2.1.1",
+    "pino": "^9.2.0",
+    "pino-pretty": "^11.2.1",
     "ts-pattern": "^5.2.0"
   },
   "devDependencies": {
@@ -77,7 +100,9 @@
     "ts-node": "^10.9.2",
     "tslib": "^2.6.3",
     "typescript": "^5.5.2",
-    "typescript-eslint": "^7.14.1"
+    "typescript-eslint": "^7.14.1",
+    "vite": "^5.3.1",
+    "vite-plugin-dts": "^3.9.1"
   },
   "peerDependencies": {
     "@react-native/babel-preset": ">=0.73.18",

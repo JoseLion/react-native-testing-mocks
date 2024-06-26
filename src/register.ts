@@ -32,3 +32,5 @@ replace("react-native/Libraries/Vibration/Vibration", VibrationMock);
 replace("react-native/Libraries/Components/View/View", ViewMock);
 replace("react-native/Libraries/Components/View/ViewNativeComponent", ViewNativeComponentMock);
 replaceEsm("react-native/Libraries/Animated/Animated", AnimatedMock);
+
+export { };
