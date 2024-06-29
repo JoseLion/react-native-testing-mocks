@@ -1,4 +1,7 @@
 // @ts-check
+import path from "path";
+import { fileURLToPath } from "url";
+
 import { fixupPluginRules } from "@eslint/compat";
 import { FlatCompat } from "@eslint/eslintrc";
 import eslintJs from "@eslint/js";
@@ -10,9 +13,6 @@ import reactRecommended from "eslint-plugin-react/configs/recommended.js";
 import sonarjs from "eslint-plugin-sonarjs";
 import globals from "globals";
 import eslintTs from "typescript-eslint";
-
-import path from "path";
-import { fileURLToPath } from "url";
 
 const project = "./tsconfig.json";
 const filename = fileURLToPath(import.meta.url);
@@ -214,7 +214,14 @@ export default eslintTs.config(
           order: "asc",
           orderImportKind: "asc",
         },
-        groups: ["external", "parent", "sibling", "type"],
+        groups: [
+          "builtin",
+          ["external", "internal"],
+          "parent",
+          "sibling",
+          "index",
+          "type",
+        ],
         "newlines-between": "always",
       }],
       "jsdoc/check-alignment": "error",

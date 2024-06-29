@@ -1,8 +1,8 @@
 // @ts-check
+import { createRequire } from "module";
+
 import pino from "pino";
 import pinoPretty from "pino-pretty";
-
-import { createRequire } from "module";
 
 const start = Date.now();
 const logger = pino(pinoPretty({ colorize: true }));
