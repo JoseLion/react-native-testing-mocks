@@ -13,7 +13,7 @@ export default defineConfig({
       },
     },
     setupFiles: [
-      "./src/register.ts",
+      "./src/load.ts",
       "./test/setup.ts",
     ],
   },

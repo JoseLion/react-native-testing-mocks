@@ -5,6 +5,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: {
+        load: "./src/load.ts",
         main: "./src/main.ts",
         register: "./src/register.ts",
       },

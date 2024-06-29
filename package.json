@@ -27,19 +27,17 @@
       "default": "./dist/main.js"
     },
     "./register": {
-      "import": "./register.js",
-      "require": "./register.cjs",
+      "import": "./dist/register.js",
+      "require": "./dist/register.cjs",
       "types": "./dist/register.d.ts",
-      "default": "./register.js"
+      "default": "./dist/register.js"
     },
     "./package.json": "./package.json"
   },
   "files": [
     "./dist",
     "./src/",
-    "./package.json",
-    "./register.cjs",
-    "./register.js"
+    "./package.json"
   ],
   "engines": {
     "node": ">=18"
