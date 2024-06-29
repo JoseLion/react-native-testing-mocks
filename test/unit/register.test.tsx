@@ -3,6 +3,7 @@ import { render, userEvent, waitFor } from "@testing-library/react-native";
 import { type ReactElement, useCallback, useRef, useState } from "react";
 import { ActivityIndicator, Animated, Button, Image, Modal, ScrollView, Text, TextInput, View } from "react-native";
 import { Rect, Svg } from "react-native-svg";
+import { describe, it, suite } from "vitest";
 
 function TestScreen(): ReactElement {
   const [animated, setAnimated] = useState(false);
@@ -67,8 +68,8 @@ function TestScreen(): ReactElement {
   );
 }
 
-describe("[Unit] register.test.ts", () => {
-  context("when main is called", () => {
+suite("[Unit] register.test.ts", () => {
+  describe("when main is called", () => {
     it("mocks react native so it can render on Node.js", async () => {
       const {
         getByText,

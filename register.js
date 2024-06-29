@@ -2,10 +2,13 @@
 import pino from "pino";
 import pinoPretty from "pino-pretty";
 
+import { createRequire } from "module";
+
 const start = Date.now();
 const logger = pino(pinoPretty({ colorize: true }));
+const require = createRequire(import.meta.url);
 
-await import("./dist/register");
+require("./dist/register.cjs");
 
 const end = Date.now();
 const diff = (end - start) / 1000;

@@ -2,6 +2,7 @@ import { expect } from "@assertive-ts/core";
 import { render } from "@testing-library/react-native";
 import { type ReactElement, useEffect, useRef, useState } from "react";
 import { Text, View } from "react-native";
+import { afterEach, describe, it, suite } from "vitest";
 
 import { mockNative, restoreNativeMocks } from "../../../src/lib/mockNative";
 
@@ -22,7 +23,7 @@ function TestScreen(): ReactElement {
   );
 }
 
-describe("[Unit] mockNative.test.tsx", () => {
+suite("[Unit] mockNative.test.tsx", () => {
   afterEach(restoreNativeMocks);
 
   describe(".mockNative", () => {
