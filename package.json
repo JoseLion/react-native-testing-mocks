@@ -44,7 +44,7 @@
   },
   "scripts": {
     "build": "vite build",
-    "check": "yarn build && yarn compile && yarn lint && yarn test --run",
+    "check": "yarn compile && yarn lint && yarn test --run",
     "compile": "tsc",
     "lint": "eslint .",
     "release": "semantic-release",

@@ -1,5 +1,7 @@
 import path from "path";
 
+type ExportsLike = object | { default?: unknown; };
+
 /**
  * A simple no-operation function
  */
@@ -13,12 +15,15 @@ export function noop(): void {
  * @param modulePath the path to the module
  * @param exports the exports to replace
  */
-export function replace<T>(modulePath: string, exports: T): void {
+export function replace<T extends ExportsLike>(modulePath: string, factory: () => T): void {
   const id = resolveId(modulePath);
+  const exports = factory();
 
   require.cache[id] = {
     children: [],
-    exports,
+    exports: "default" in exports
+      ? { __esModule: true, ...exports }
+      : exports,
     filename: id,
     id,
     isPreloading: false,
@@ -28,16 +33,6 @@ export function replace<T>(modulePath: string, exports: T): void {
     paths: [],
     require,
   };
-}
-
-/**
- * Replaces am ESModule with a given `exports` value or another module path.
- *
- * @param modulePath the path to the ESModule
- * @param defaultExport the default export to replace
- */
-export function replaceEsm<T>(modulePath: string, defaultExport: T): void {
-  replace(modulePath, { __esModule: true, default: defaultExport });
 }
 
 function resolveId(modulePath: string): string {

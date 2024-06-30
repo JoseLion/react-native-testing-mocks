@@ -2,6 +2,7 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
+    environment: "./test/env.ts",
     globals: true,
     include: ["test/**/*.test.ts?(x)"],
     server: {
@@ -12,9 +13,6 @@ export default defineConfig({
         ],
       },
     },
-    setupFiles: [
-      "./src/load.ts",
-      "./test/setup.ts",
-    ],
+    setupFiles: "./test/setup.ts",
   },
 });

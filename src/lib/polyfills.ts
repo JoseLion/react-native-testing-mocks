@@ -1,5 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import "@react-native/js-polyfills/error-guard";
+
+import regeneratorRuntime from "regenerator-runtime/runtime";
 
 // Suppress the `react-test-renderer` warnings until New Architecture and legacy
 // mode are no longer supported by React Native.
@@ -38,7 +39,7 @@ Object.defineProperties(global, {
   regeneratorRuntime: {
     configurable: true,
     enumerable: true,
-    value: require("regenerator-runtime/runtime") as unknown,
+    value: regeneratorRuntime,
     writable: true,
   },
   requestAnimationFrame: {

@@ -26,7 +26,7 @@ export default defineConfig({
         emitDeclarationOnly: true,
         incremental: false,
       },
-      include: "src/**",
+      include: ["src/**", "typings/**"],
     }),
   ],
 });
