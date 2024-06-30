@@ -72,36 +72,9 @@ import "react-native-testing-mocks/register";
 // ...rest of your setup code
 ```
 
-### Usage with Vite
+### Mocha.js Example
 
-Even though Vite could be in charge of transforming/resolving the React Native files, this library already does that under the hood with Babel. This is not ideal on Vite, but it does work with the right setup. Here's a minimal example of what your `vitest.config.ts` should look like:
-
-```ts
-import { defineConfig } from "vitest/config";
-
-export default defineConfig({
-  test: {
-    globals: true,
-    include: ["test/**/*.test.ts?(x)"],
-    server: {
-      deps: {
-        external: [
-          "react-native",
-          "@react-native",
-        ],
-      },
-    },
-    setupFiles: [
-      import.meta.resolve("react-native-testing-mocks/register"),
-      // ...any other setup files
-    ],
-  },
-});
-```
-
-### Usage with Mocha
-
-Some frameworks provide mechanisms to load setup modules. In Mocha.js, you can use the `--require` CLI option:
+Some frameworks also provide mechanisms to load setup modules. In Mocha.js, you can use the `--require` CLI option:
 
 ```bash
 mocha --require react-native-testing-mocks/register
