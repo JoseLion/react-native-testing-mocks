@@ -13,23 +13,42 @@
     "mocks",
     "mock"
   ],
-  "main": "./dist/main.js",
+  "type": "module",
+  "source": "./src/main.ts",
+  "main": "./dist/main.cjs",
+  "module": "./dist/main.js",
   "types": "./dist/main.d.ts",
+  "sideEffects": true,
+  "exports": {
+    ".": {
+      "import": "./dist/main.js",
+      "require": "./dist/main.cjs",
+      "types": "./dist/main.d.ts",
+      "default": "./dist/main.js"
+    },
+    "./register": {
+      "import": "./dist/register.js",
+      "require": "./dist/register.cjs",
+      "types": "./dist/register.d.ts",
+      "default": "./dist/register.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
-    "dist/",
-    "src/",
-    "register.js"
+    "./dist",
+    "./src/",
+    "./package.json"
   ],
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.prod.json",
-    "check": "yarn compile && yarn lint && yarn test",
+    "build": "vite build",
+    "check": "yarn compile && yarn lint && yarn test --run",
     "compile": "tsc",
     "lint": "eslint .",
     "release": "semantic-release",
-    "test": "NODE_ENV=test mocha"
+    "test": "vitest"
   },
   "packageManager": "yarn@4.3.1",
   "dependencies": {
@@ -37,36 +56,36 @@
     "@babel/register": "^7.24.6",
     "babel-plugin-module-resolver": "^5.0.2",
     "dot-prop-immutable": "^2.1.1",
+    "pino": "^9.2.0",
+    "pino-pretty": "^11.2.1",
     "ts-pattern": "^5.2.0"
   },
   "devDependencies": {
     "@assertive-ts/core": "^2.1.0",
     "@eslint/compat": "^1.1.0",
     "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^9.5.0",
+    "@eslint/js": "^9.6.0",
     "@react-native/babel-preset": "^0.74.84",
-    "@stylistic/eslint-plugin": "^2.2.2",
+    "@stylistic/eslint-plugin": "^2.3.0",
     "@testing-library/react-native": "^12.5.1",
     "@types/babel__core": "^7.20.5",
     "@types/babel__register": "^7.17.3",
     "@types/eslint__eslintrc": "^2.1.1",
     "@types/eslint__js": "^8.42.3",
-    "@types/mocha": "^10.0.7",
-    "@types/node": "^20.14.8",
+    "@types/node": "^20.14.9",
     "@types/react": "^18.3.3",
     "@types/react-test-renderer": "^18.3.0",
     "@types/sinon": "^17.0.3",
-    "eslint": "^9.5.0",
+    "eslint": "^9.6.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-deprecation": "^3.0.0",
     "eslint-plugin-etc": "^2.0.3",
     "eslint-plugin-extra-rules": "^0.0.0-development",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsdoc": "^48.4.0",
+    "eslint-plugin-jsdoc": "^48.5.0",
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-sonarjs": "^1.0.3",
     "globals": "^15.6.0",
-    "mocha": "^10.5.0",
     "react": "18.3.1",
     "react-native": "^0.74.2",
     "react-native-svg": "^15.3.0",
@@ -74,10 +93,12 @@
     "semantic-release": "^24.0.0",
     "semantic-release-yarn": "^3.0.2",
     "sinon": "^18.0.0",
-    "ts-node": "^10.9.2",
     "tslib": "^2.6.3",
     "typescript": "^5.5.2",
-    "typescript-eslint": "^7.14.1"
+    "typescript-eslint": "^7.14.1",
+    "vite": "^5.3.2",
+    "vite-plugin-dts": "^3.9.1",
+    "vitest": "^1.6.0"
   },
   "peerDependencies": {
     "@react-native/babel-preset": ">=0.73.18",

@@ -1,11 +1,13 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import "@react-native/js-polyfills/error-guard";
 
-global.IS_REACT_ACT_ENVIRONMENT = true;
+import regeneratorRuntime from "regenerator-runtime/runtime";
+
 // Suppress the `react-test-renderer` warnings until New Architecture and legacy
 // mode are no longer supported by React Native.
-// @ts-expect-error type not defined
-global.IS_REACT_NATIVE_TEST_ENVIRONMENT = true;
+Object.assign(global, {
+  IS_REACT_ACT_ENVIRONMENT: true,
+  IS_REACT_NATIVE_TEST_ENVIRONMENT: true,
+});
 
 Object.defineProperties(global, {
   __DEV__: {
@@ -37,7 +39,7 @@ Object.defineProperties(global, {
   regeneratorRuntime: {
     configurable: true,
     enumerable: true,
-    value: require("regenerator-runtime/runtime") as unknown,
+    value: regeneratorRuntime,
     writable: true,
   },
   requestAnimationFrame: {
