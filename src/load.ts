@@ -34,3 +34,5 @@ replace(`${libs}/Vibration/Vibration`, () => VibrationMock);
 replace(`${libs}/Components/View/View`, () => ViewMock);
 replace(`${libs}/Components/View/ViewNativeComponent`, () => ViewNativeComponentMock);
 replace(`${libs}/Animated/Animated`, () => ({ default: AnimatedMock }));
+
+export { };
