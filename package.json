@@ -54,7 +54,7 @@
   "dependencies": {
     "@babel/core": "^7.24.7",
     "@babel/register": "^7.24.6",
-    "babel-plugin-module-resolver": "^5.0.2",
+    "babel-plugin-extension-resolver": "^1.0.12",
     "dot-prop-immutable": "^2.1.1",
     "pino": "^9.2.0",
     "pino-pretty": "^11.2.1",
