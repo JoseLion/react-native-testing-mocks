@@ -72,9 +72,28 @@ import "react-native-testing-mocks/register";
 // ...rest of your setup code
 ```
 
-### Mocha.js Example
+### With Vitest
 
-Some frameworks also provide mechanisms to load setup modules. In Mocha.js, you can use the `--require` CLI option:
+Ideally, Vitest should be able to replace Babel when it comes to resolving and transforming the React Native code. However, so much more goes on in [@react-native/babel-preset](https://www.npmjs.com/package/@react-native/babel-preset) that replacing this module with Vite is not only a hard task but also increases the risk of something going wrong. So, until React Native delivers their code in a more conventional format (CommonJS/ESM), is my opinion that it's safer to keep using Babel to transform React Native's code with Vitest.
+
+That being said, this package also provides a Vite Plugin you can add to your `vitest.config.ts` configuration file:
+
+```ts
+import { reactNativePlugin } from "react-native-testing-mocks/vitest";
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  plugins: [reactNativePlugin()],
+  test: {
+    include: ["test/**/*.test.ts?(x)"],
+    setupFiles: "./test/setup.ts",
+  },
+});
+```
+
+### With Mocha
+
+Some frameworks like Mocha provide a mechanism to require modules during the Node.js execution. For instance, you can use the `--require` CLI option:
 
 ```bash
 mocha --require react-native-testing-mocks/register
@@ -91,9 +110,9 @@ Or you can add it to the `.mocharc.json` file:
   "require": [
     "ts-node/register",
     "react-native-testing-mocks/register",
-    "test/hooks.ts"
+    "./test/setup.ts"
   ],
-  "spec": ["test/**/*.test.*"]
+  "spec": ["test/**/*.test.ts?(x)"]
 }
 ```
 

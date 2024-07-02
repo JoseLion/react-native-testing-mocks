@@ -1,10 +1,11 @@
+import { name } from "../../package.json";
+
 import type { Environment } from "vitest";
 
 const reactNativeEnv: Environment = {
   name: "react-native",
   setup: async () => {
-    await import("../src/lib/babelRegister");
-    await import("../src/load");
+    await import(`${name}/register`);
 
     return { teardown: () => undefined };
   },
