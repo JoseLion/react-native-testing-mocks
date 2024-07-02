@@ -1,6 +1,6 @@
 import { defineConfig } from "vitest/config";
 
-import { reactNativePlugin } from "./src/vitest/plugin";
+import { reactNativePlugin } from "./test/plugin";
 
 export default defineConfig({
   plugins: [reactNativePlugin()],
