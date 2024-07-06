@@ -32,11 +32,25 @@
       "types": "./dist/register.d.ts",
       "default": "./dist/register.js"
     },
+    "./vitest": {
+      "import": "./dist/vitest.js",
+      "require": "./dist/vitest.cjs",
+      "types": "./dist/vitest/plugin.d.ts",
+      "default": "./dist/vitest.js"
+    },
+    "./vitest/env": {
+      "import": "./dist/vitestEnv.js",
+      "require": "./dist/vitestEnv.cjs",
+      "types": "./dist/vitest/env.d.ts",
+      "default": "./dist/vitestEnv.js"
+    },
     "./package.json": "./package.json"
   },
   "files": [
     "./dist",
     "./src/",
+    "./register.d.ts",
+    "./vitest.d.ts",
     "./package.json"
   ],
   "engines": {

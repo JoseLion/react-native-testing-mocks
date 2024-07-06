@@ -1,13 +1,18 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+import { createRequire } from "module";
+
 import { match } from "ts-pattern";
 
 import { replace } from "../helpers/commons";
 import { type AllNativeMethods, mockComponent } from "../helpers/mockComponent";
-import { nativeMethodsMock } from "../helpers/nativeMethodsMock";
-
-import { type ImageMethods, imageMethodsMock } from "./Components/Image";
-import { type ScrollViewMethods, scrollViewMethodsMock } from "./Components/ScrollView";
-import { type TextInputMethods, textInputMethodsMock } from "./Components/TextInput";
+import {
+  type ImageMethods,
+  type ScrollViewMethods,
+  type TextInputMethods,
+  imageMethodsMock,
+  nativeMethodsMock,
+  scrollViewMethodsMock,
+  textInputMethodsMock,
+} from "../helpers/nativeMethodsMock";
 
 import type { ComponentClass, PropsWithChildren } from "react";
 import type { NativeMethods } from "react-native";
@@ -22,6 +27,8 @@ export type NativeKey = NativeBase
   | "Image"
   | "ScrollView"
   | "TextInput";
+
+const require = createRequire(import.meta.url);
 
 const MOCKS: Set<NativeKey> = new Set();
 

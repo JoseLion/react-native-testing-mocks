@@ -7,8 +7,7 @@ import {
   createElement,
 } from "react";
 
-import type { ScrollViewMethods } from "../lib/Components/ScrollView";
-import type { TextInputMethods } from "../lib/Components/TextInput";
+import type { ScrollViewMethods, TextInputMethods } from "./nativeMethodsMock";
 import type { NativeMethods } from "react-native";
 
 export type AllNativeMethods = NativeMethods | ScrollViewMethods | TextInputMethods;

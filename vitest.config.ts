@@ -1,18 +1,11 @@
 import { defineConfig } from "vitest/config";
 
+import { reactNativeVitestPlugin } from "./test/plugin";
+
 export default defineConfig({
+  plugins: [reactNativeVitestPlugin()],
   test: {
-    environment: "./test/env.ts",
-    globals: true,
     include: ["test/**/*.test.ts?(x)"],
-    server: {
-      deps: {
-        external: [
-          "react-native",
-          "@react-native",
-        ],
-      },
-    },
     setupFiles: "./test/setup.ts",
   },
 });
