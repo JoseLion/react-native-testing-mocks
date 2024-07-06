@@ -3,6 +3,7 @@ import { createRequire } from "module";
 import { match } from "ts-pattern";
 
 import { replace } from "../helpers/commons";
+import { logger } from "../helpers/logger";
 import { type AllNativeMethods, mockComponent } from "../helpers/mockComponent";
 import {
   type ImageMethods,
@@ -65,6 +66,7 @@ export function mockNative(type: NativeKey, methods: Partial<AllNativeMethods | 
 
   replace(path, () => type === "ActivityIndicator" ? { default: Mock } : Mock);
   MOCKS.add(type);
+  logger.replace(`Native methods mocks assigned to ${type}.`);
 }
 
 /**
@@ -85,4 +87,5 @@ export function restoreNativeMocks(): void {
   });
 
   MOCKS.clear();
+  logger.replace("All native methods mocks restored!");
 }

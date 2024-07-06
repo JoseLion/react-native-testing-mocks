@@ -1,6 +1,8 @@
 import { createRequire } from "module";
 import path from "path";
 
+import { logger } from "./logger";
+
 type ExportsLike = object | { default?: unknown; };
 
 const require = createRequire(import.meta.url);
@@ -36,6 +38,8 @@ export function replace<T extends ExportsLike>(modulePath: string, factory: () =
     paths: [],
     require,
   };
+
+  logger.replace(`Module replaced: ${modulePath}`);
 }
 
 function resolveId(modulePath: string): string {
