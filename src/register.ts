@@ -3,8 +3,10 @@ import { createRequire } from "module";
 import pino from "pino";
 import pinoPretty from "pino-pretty";
 
+import { name } from "../package.json";
+
 const start = Date.now();
-const logger = pino(pinoPretty({ colorize: true }));
+const logger = pino({ name }, pinoPretty({ colorize: true }));
 const require = createRequire(import.meta.url);
 
 require("./load.cjs");

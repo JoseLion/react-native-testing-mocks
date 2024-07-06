@@ -1,6 +1,6 @@
 import type { Plugin } from "vite";
 
-export function reactNativePlugin(): Plugin {
+export function reactNativeVitestPlugin(): Plugin {
   return {
     config: {
       handler: () => ({

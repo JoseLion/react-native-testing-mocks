@@ -1,25 +1,9 @@
 import { Image } from "react-native";
 
-import { noop } from "../../helpers/commons";
 import { mockComponent } from "../../helpers/mockComponent";
+import { imageMethodsMock } from "../../helpers/nativeMethodsMock";
 
 import type { ComponentClass } from "react";
-
-export type ImageMethods = Partial<typeof Image>;
-
-export const imageMethodsMock: ImageMethods = {
-  getSize: noop,
-  getSizeWithHeaders: noop,
-  prefetch: () => Promise.resolve(false),
-  prefetchWithMetadata: () => Promise.resolve(false),
-  queryCache: () => Promise.resolve({ }),
-  resolveAssetSource: () => ({
-    height: 0,
-    scale: 0,
-    uri: "",
-    width: 0,
-  }),
-};
 
 const Mock = mockComponent(Image as ComponentClass);
 

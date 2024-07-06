@@ -1,9 +1,9 @@
 import { defineConfig } from "vitest/config";
 
-import { reactNativePlugin } from "./test/plugin";
+import { reactNativeVitestPlugin } from "./test/plugin";
 
 export default defineConfig({
-  plugins: [reactNativePlugin()],
+  plugins: [reactNativeVitestPlugin()],
   test: {
     include: ["test/**/*.test.ts?(x)"],
     setupFiles: "./test/setup.ts",

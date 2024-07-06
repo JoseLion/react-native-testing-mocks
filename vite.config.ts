@@ -9,6 +9,7 @@ export default defineConfig({
         main: "./src/main.ts",
         register: "./src/register.ts",
         vitest: "./src/vitest/plugin.ts",
+        vitestEnv: "./src/vitest/env.ts",
       },
       fileName: (_, entry) => entry,
       formats: ["cjs", "es"],

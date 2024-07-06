@@ -1,6 +1,9 @@
+import { createRequire } from "module";
 import path from "path";
 
 type ExportsLike = object | { default?: unknown; };
+
+const require = createRequire(import.meta.url);
 
 /**
  * A simple no-operation function
