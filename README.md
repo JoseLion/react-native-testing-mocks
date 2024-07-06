@@ -26,7 +26,8 @@ But what if you don't want to use Jest as your testing framework? What if you do
 - [Requirements](#requirements)
 - [Install](#install)
 - [Usage](#usage)
-  - [Mocha.js example](#mochajs-example)
+  - [With Vitest](#with-vitest)
+  - [With Mocha](#with-mocha)
   - [Mocking native methods](#mocking-native-methods)
 - [Contributing](#contributing)
 - [License](#license)
@@ -79,11 +80,11 @@ Ideally, Vitest should be able to replace Babel when it comes to resolving and t
 That being said, this package also provides a Vite Plugin you can add to your `vitest.config.ts` configuration file:
 
 ```ts
-import { reactNativePlugin } from "react-native-testing-mocks/vitest";
+import { reactNativeVitestPlugin } from "react-native-testing-mocks/vitest";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  plugins: [reactNativePlugin()],
+  plugins: [reactNativeVitestPlugin()],
   test: {
     include: ["test/**/*.test.ts?(x)"],
     setupFiles: "./test/setup.ts",
