@@ -63,7 +63,15 @@ export const NativeModulesMock = {
   },
   PlatformConstants: {
     getConstants() {
-      return { isTesting: true };
+      return {
+        isTesting: true,
+        reactNativeVersion: {
+          major: 1000,
+          minor: 0,
+          patch: 0,
+          prerelease: undefined,
+        },
+      };
     },
   },
   PushNotificationManager: {
