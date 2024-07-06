@@ -69,9 +69,9 @@
     "@babel/core": "^7.24.7",
     "@babel/register": "^7.24.6",
     "babel-plugin-extension-resolver": "^1.0.12",
+    "debug": "^4.3.5",
     "dot-prop-immutable": "^2.1.1",
-    "pino": "^9.2.0",
-    "pino-pretty": "^11.2.1",
+    "supports-color": "^9.4.0",
     "ts-pattern": "^5.2.0"
   },
   "devDependencies": {
@@ -84,6 +84,7 @@
     "@testing-library/react-native": "^12.5.1",
     "@types/babel__core": "^7.20.5",
     "@types/babel__register": "^7.17.3",
+    "@types/debug": "^4.1.12",
     "@types/eslint__eslintrc": "^2.1.1",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^20.14.9",
