@@ -6,7 +6,6 @@ import { NativeComponentRegistryMock } from "./Core/NativeComponentRegistry";
 import { NativeModulesMock } from "./Core/NativeModules";
 import { RendererProxyMock } from "./Core/RendererProxy";
 import { UIManagerMock } from "./Core/UIManager";
-import { verifyComponentAttrEqMock } from "./Core/verifyComponentAttributeEquivalence";
 
 Object.assign(global, { jest: { fn: () => noop } });
 
@@ -17,5 +16,4 @@ replace("react-native/Libraries/Linking/Linking", () => LinkingMock);
 replace("react-native/Libraries/BatchedBridge/NativeModules", () => NativeModulesMock);
 replace("react-native/Libraries/NativeComponent/NativeComponentRegistry", () => NativeComponentRegistryMock);
 replace("react-native/Libraries/ReactNative/requireNativeComponent", () => ({ default: mockNativeComponent }));
-replace("react-native/Libraries/Utilities/verifyComponentAttributeEquivalence", () => verifyComponentAttrEqMock);
 replace("react-native/Libraries/ReactNative/RendererProxy", () => RendererProxyMock);

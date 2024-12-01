@@ -3,7 +3,7 @@ import path from "path";
 
 import { name } from "../../package.json";
 
-import type { Plugin } from "vite";
+import type { Plugin } from "vitest/config";
 
 interface ReactNativeVitestPluginOptions {
   /**
@@ -16,7 +16,7 @@ interface ReactNativeVitestPluginOptions {
    *
    * @default []
    */
-  external?: Array<string | RegExp>;
+  external?: Array<RegExp | string>;
 }
 
 /**

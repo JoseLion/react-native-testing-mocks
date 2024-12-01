@@ -22,15 +22,20 @@ But what if you don't want to use Jest as your testing framework? What if you do
 
 ## Table of contents
 
-- [Features](#features)
-- [Requirements](#requirements)
-- [Install](#install)
-- [Usage](#usage)
-  - [With Vitest](#with-vitest)
-  - [With Mocha](#with-mocha)
-  - [Mocking native methods](#mocking-native-methods)
-- [Contributing](#contributing)
-- [License](#license)
+- [React Native Testing Mocks](#react-native-testing-mocks)
+  - [Motivation](#motivation)
+  - [Table of contents](#table-of-contents)
+    - [Features](#features)
+  - [Requirements](#requirements)
+  - [Install](#install)
+  - [Usage](#usage)
+    - [With Vitest](#with-vitest)
+    - [With Mocha](#with-mocha)
+    - [Mocking native methods](#mocking-native-methods)
+  - [Contributing](#contributing)
+    - [Something's missing?](#somethings-missing)
+    - [Contributions](#contributions)
+  - [License](#license)
 
 ### Features
 
@@ -48,6 +53,9 @@ But what if you don't want to use Jest as your testing framework? What if you do
 - **Node.js:** >=18
 - **react:** >=18.2.0
 - **react-native:** ">=0.73.2
+
+> [!NOTE]
+> Node.js v22.7.0 has enabled [module syntax detection](https://github.com/nodejs/node/releases/tag/v22.7.0) by default, causing React Native's flow modules to fail to load. The simplest solution for now is to disable the experimental feature using the `--no-experimental-detect-module` flag. You can add it to your tests script with the following environmet variable: `NODE_OPTIONS="--no-experimental-detect-module"`.
 
 ## Install
 

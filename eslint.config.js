@@ -1,48 +1,30 @@
 // @ts-check
-import path from "path";
-import { fileURLToPath } from "url";
-
-import { fixupPluginRules } from "@eslint/compat";
-import { FlatCompat } from "@eslint/eslintrc";
 import eslintJs from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
-import etc from "eslint-plugin-etc";
+import * as importPlugin from "eslint-plugin-import";
 import jsdoc from "eslint-plugin-jsdoc";
-import reactJsxRuntime from "eslint-plugin-react/configs/jsx-runtime.js";
-import reactRecommended from "eslint-plugin-react/configs/recommended.js";
+import perfectionist from "eslint-plugin-perfectionist";
+import reactPlugin from "eslint-plugin-react";
 import sonarjs from "eslint-plugin-sonarjs";
 import globals from "globals";
 import eslintTs from "typescript-eslint";
 
 const project = "./tsconfig.json";
-const filename = fileURLToPath(import.meta.url);
-const dirname = path.dirname(filename);
-const compat = new FlatCompat({
-  baseDirectory: dirname,
-  recommendedConfig: eslintJs.configs.recommended,
-});
 
 /**
- * @param {string} name the pugin name
- * @param {string} alias the plugin alias
- * @returns {import("eslint").ESLint.Plugin}
+ * @param {object} config the plugin config
+ * @returns {import("typescript-eslint").ConfigWithExtends}
  */
-function legacyPlugin(name, alias = name) {
-  const plugin = compat.plugins(name)[0]?.plugins?.[alias];
-
-  if (!plugin) {
-    throw new Error(`Unable to resolve plugin ${name} and/or alias ${alias}`);
-  }
-
-  return fixupPluginRules(plugin);
+function fixConfigTypes(config) {
+  return config;
 }
 
 export default eslintTs.config(
   eslintJs.configs.recommended,
   ...eslintTs.configs.recommendedTypeChecked,
-  ...compat.extends("plugin:import/typescript"),
-  reactRecommended,
-  reactJsxRuntime,
+  fixConfigTypes(importPlugin.flatConfigs?.typescript),
+  fixConfigTypes(reactPlugin.configs.flat?.recommended),
+  fixConfigTypes(reactPlugin.configs.flat?.["jsx-runtime"]),
   sonarjs.configs.recommended,
   stylistic.configs.customize({
     braceStyle: "1tbs",
@@ -63,7 +45,7 @@ export default eslintTs.config(
       globals: { ...globals.browser, ...globals.node },
       parserOptions: {
         ecmaFeatures: { jsx: true },
-        ecmaVersion: 2024,
+        ecmaVersion: 2023,
         jsxPragma: null,
         project,
         tsconfigRootDir: import.meta.dirname,
@@ -74,13 +56,12 @@ export default eslintTs.config(
       reportUnusedDisableDirectives: "error",
     },
     plugins: {
-      deprecation: legacyPlugin("eslint-plugin-deprecation", "deprecation"),
-      etc: fixupPluginRules(etc),
-      "extra-rules": legacyPlugin("eslint-plugin-extra-rules", "extra-rules"),
-      import: legacyPlugin("eslint-plugin-import", "import"),
+      import: importPlugin,
       jsdoc,
+      perfectionist,
     },
     settings: {
+      "import/ignore": ["react-native"], // https://github.com/facebook/react-native/issues/28549
       "import/resolver": {
         typescript: {
           alwaysTryTypes: true,
@@ -95,7 +76,6 @@ export default eslintTs.config(
   {
     rules: {
       "@stylistic/arrow-parens": ["error", "as-needed"],
-      "@stylistic/indent": "off",
       "@stylistic/indent-binary-ops": "off",
       "@stylistic/jsx-curly-brace-presence": ["error", { children: "always" }],
       "@stylistic/jsx-curly-newline": "off",
@@ -117,6 +97,7 @@ export default eslintTs.config(
       "@stylistic/no-mixed-spaces-and-tabs": "error",
       "@stylistic/no-multiple-empty-lines": ["error", { max: 1, maxBOF: 0, maxEOF: 0 }],
       "@stylistic/object-curly-spacing": ["error", "always"],
+      "@stylistic/object-property-newline": ["error", { allowAllPropertiesOnSameLine: true }],
       "@stylistic/padded-blocks": ["error", "never", { allowSingleLineBlocks: false }],
       "@stylistic/quote-props": ["error", "as-needed"],
       "@stylistic/quotes": ["error", "double", {
@@ -125,7 +106,6 @@ export default eslintTs.config(
       }],
       "@stylistic/space-before-function-paren": ["error", { anonymous: "never", named: "never" }],
       "@stylistic/switch-colon-spacing": "error",
-      "@typescript-eslint/ban-types": "error",
       "@typescript-eslint/consistent-type-assertions": "error",
       "@typescript-eslint/consistent-type-exports": "error",
       "@typescript-eslint/consistent-type-imports": ["error", { fixStyle: "inline-type-imports" }],
@@ -187,14 +167,11 @@ export default eslintTs.config(
       camelcase: "error",
       "constructor-super": "error",
       curly: "error",
-      "deprecation/deprecation": "error",
       eqeqeq: "error",
-      "etc/no-assign-mutated-array": "error",
-      "etc/no-implicit-any-catch": "error",
-      "etc/no-internal": "error",
-      "etc/throw-error": "error",
-      "extra-rules/no-commented-out-code": "error",
       "func-style": ["error", "declaration", { allowArrowFunctions: true }],
+      "import/default": "off",
+      "import/named": "off",
+      "import/namespace": "off",
       "import/newline-after-import": "error",
       "import/no-absolute-path": "error",
       "import/no-cycle": ["error", {
@@ -204,7 +181,8 @@ export default eslintTs.config(
       }],
       "import/no-duplicates": ["error", { "prefer-inline": true }],
       "import/no-import-module-exports": "error",
-      "import/no-namespace": "error",
+      "import/no-named-as-default-member": "off",
+      "import/no-namespace": ["error", { ignore: ["eslint-plugin-import"] }],
       "import/no-relative-packages": "error",
       "import/no-unresolved": "error",
       "import/no-useless-path-segments": "error",
@@ -247,6 +225,11 @@ export default eslintTs.config(
       "no-var": "error",
       "object-shorthand": "error",
       "one-var": ["error", "never"],
+      "perfectionist/sort-interfaces": ["error", { ignoreCase: false, type: "natural" }],
+      "perfectionist/sort-intersection-types": ["error", { ignoreCase: false, type: "natural" }],
+      "perfectionist/sort-object-types": ["error", { ignoreCase: false, type: "natural" }],
+      "perfectionist/sort-objects": ["error", { ignoreCase: false, type: "natural" }],
+      "perfectionist/sort-union-types": ["error", { ignoreCase: false, type: "natural" }],
       "prefer-const": "error",
       radix: "error",
       "react/display-name": "off",
@@ -256,10 +239,17 @@ export default eslintTs.config(
       "react/jsx-no-literals": "error",
       "react/prop-types": "off",
       "sonarjs/cognitive-complexity": "off",
+      "sonarjs/different-types-comparison": "off",
+      "sonarjs/function-return-type": "off",
       "sonarjs/no-duplicate-string": "off",
-      "sonarjs/no-inverted-boolean-check": "error",
+      "sonarjs/no-empty-function": "off",
+      "sonarjs/no-extend-native": "off",
+      "sonarjs/no-nested-functions": "off",
+      "sonarjs/no-selector-parameter": "off",
+      "sonarjs/no-unused-expressions": "off",
+      "sonarjs/public-static-readonly": "off",
+      "sonarjs/sonar-prefer-read-only-props": "off",
       "sort-imports": ["error", { ignoreDeclarationSort: true }],
-      "sort-keys": "error",
     },
   },
   {
@@ -273,11 +263,6 @@ export default eslintTs.config(
     rules: {
       ...eslintTs.configs.disableTypeChecked.rules,
       "@typescript-eslint/explicit-function-return-type": "off",
-      "deprecation/deprecation": "off",
-      "etc/no-assign-mutated-array": "off",
-      "etc/no-implicit-any-catch": "off",
-      "etc/no-internal": "off",
-      "etc/throw-error": "off",
     },
   },
   {
@@ -290,8 +275,11 @@ export default eslintTs.config(
     files: ["**/*.test.ts?(x)"],
     rules: {
       "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/prefer-promise-reject-errors": "off",
       "@typescript-eslint/restrict-template-expressions": "off",
-      "etc/throw-error": "off",
+      "sonarjs/assertions-in-tests": "off",
+      "sonarjs/no-empty-test-file": "off",
+      "sonarjs/no-nested-functions": "off",
     },
   },
 );

@@ -45,8 +45,8 @@ export function replace<T extends ExportsLike>(modulePath: string, factory: () =
 function resolveId(modulePath: string): string {
   try {
     return require.resolve(modulePath);
-  } catch (error) {
+  } catch {
     const hastePath = require.resolve(`${modulePath}.ios`);
-    return hastePath.slice(0, -4);
+    return hastePath.slice(0, -3);
   }
 }

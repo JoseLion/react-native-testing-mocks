@@ -25,8 +25,8 @@ export const nativeMethodsMock: NativeMethods = {
 };
 
 export const imageMethodsMock: ImageMethods = {
-  getSize: noop,
-  getSizeWithHeaders: noop,
+  getSize: () => Promise.resolve({ height: 0, width: 0 }),
+  getSizeWithHeaders: () => Promise.resolve({ height: 0, width: 0 }),
   prefetch: () => Promise.resolve(false),
   prefetchWithMetadata: () => Promise.resolve(false),
   queryCache: () => Promise.resolve({ }),
@@ -44,6 +44,7 @@ export const scrollViewMethodsMock: ScrollViewMethods = {
   getInnerViewNode: noop,
   getInnerViewRef: () => null,
   getNativeScrollRef: () => null,
+  getScrollableNode: noop,
   getScrollResponder: () => ({
     addListenerOn: noop,
     componentWillMount: noop,
@@ -74,7 +75,6 @@ export const scrollViewMethodsMock: ScrollViewMethods = {
     scrollResponderTextInputFocusError: noop,
     scrollResponderZoomTo: noop,
   }),
-  getScrollableNode: noop,
   scrollResponderScrollNativeHandleToKeyboard: noop,
   scrollResponderZoomTo: noop,
   scrollTo: noop,

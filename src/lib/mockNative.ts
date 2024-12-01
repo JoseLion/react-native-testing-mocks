@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/prefer-object-spread */
 import { createRequire } from "module";
 
 import { match } from "ts-pattern";
@@ -24,10 +25,11 @@ export type NativeBase =
   | "Text"
   | "View";
 
-export type NativeKey = NativeBase
+export type NativeKey =
   | "Image"
   | "ScrollView"
-  | "TextInput";
+  | "TextInput"
+  | NativeBase;
 
 const require = createRequire(import.meta.url);
 

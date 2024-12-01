@@ -72,12 +72,12 @@ suite("[Unit] register.test.ts", () => {
   describe("when main is called", () => {
     it("mocks react native so it can render on Node.js", async () => {
       const {
-        getByText,
-        getByPlaceholderText,
+        findByText,
         getByDisplayValue,
         getByLabelText,
+        getByPlaceholderText,
         getByTestId,
-        findByText,
+        getByText,
       } = render(<TestScreen />);
 
       expect(getByLabelText("Loading")).toBePresent();
