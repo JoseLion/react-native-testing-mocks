@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/prefer-object-spread */
 import { createRequire } from "module";
 
 import { match } from "ts-pattern";
