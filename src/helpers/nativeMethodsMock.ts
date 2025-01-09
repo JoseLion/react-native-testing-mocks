@@ -1,17 +1,17 @@
 import { noop } from "./commons";
 
-import type { ElementRef } from "react";
+import type { ComponentRef } from "react";
 import type { HostComponent, Image, NativeMethods, ScrollView, TextInput, View } from "react-native";
 
 export type ImageMethods = Partial<typeof Image>;
 
 export type ScrollViewMethods = NativeMethods | ScrollView & {
-  getInnerViewRef: () => ElementRef<typeof View> | null;
-  getNativeScrollRef: () => ElementRef<HostComponent<unknown>> | null;
+  getInnerViewRef: () => ComponentRef<typeof View> | null;
+  getNativeScrollRef: () => ComponentRef<HostComponent<unknown>> | null;
 };
 
 export type TextInputMethods = NativeMethods | TextInput & {
-  getNativeRef: () => ElementRef<HostComponent<unknown>> | undefined;
+  getNativeRef: () => ComponentRef<HostComponent<unknown>> | undefined;
 };
 
 export const nativeMethodsMock: NativeMethods = {
@@ -25,8 +25,8 @@ export const nativeMethodsMock: NativeMethods = {
 };
 
 export const imageMethodsMock: ImageMethods = {
-  getSize: noop,
-  getSizeWithHeaders: noop,
+  getSize: () => Promise.resolve({ height: 0, width: 0 }),
+  getSizeWithHeaders: () => Promise.resolve({ height: 0, width: 0 }),
   prefetch: () => Promise.resolve(false),
   prefetchWithMetadata: () => Promise.resolve(false),
   queryCache: () => Promise.resolve({ }),
@@ -44,6 +44,7 @@ export const scrollViewMethodsMock: ScrollViewMethods = {
   getInnerViewNode: noop,
   getInnerViewRef: () => null,
   getNativeScrollRef: () => null,
+  getScrollableNode: noop,
   getScrollResponder: () => ({
     addListenerOn: noop,
     componentWillMount: noop,
@@ -74,7 +75,6 @@ export const scrollViewMethodsMock: ScrollViewMethods = {
     scrollResponderTextInputFocusError: noop,
     scrollResponderZoomTo: noop,
   }),
-  getScrollableNode: noop,
   scrollResponderScrollNativeHandleToKeyboard: noop,
   scrollResponderZoomTo: noop,
   scrollTo: noop,

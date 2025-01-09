@@ -19,7 +19,7 @@ export function mockComponent<P, C extends ComponentClass<PropsWithChildren<P>>>
   const SuperClass: ComponentClass<PropsWithChildren<P>> = typeof RealComponent === "function"
     ? RealComponent
     : Component;
-  const name = RealComponent.displayName
+  const name = (RealComponent.displayName ?? "")
     || RealComponent.name
     || get(RealComponent, "render.displayName", "")
     || get(RealComponent, "render.name", "")

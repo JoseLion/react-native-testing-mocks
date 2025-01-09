@@ -1,8 +1,8 @@
 import { Animated } from "react-native";
 
 interface ValueXY {
-  x: number | Animated.AnimatedValue;
-  y: number | Animated.AnimatedValue;
+  x: Animated.AnimatedValue | number;
+  y: Animated.AnimatedValue | number;
 }
 
 export class AnimatedValueXYMock extends Animated.ValueXY {

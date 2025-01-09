@@ -1,1 +1,1 @@
-export * from "./dist/register";
+export type * from "./dist/register";

@@ -1,4 +1,10 @@
-import { Component, type ComponentClass, type PropsWithChildren, type ReactNode, createElement } from "react";
+import {
+  Component,
+  type ComponentClass,
+  type PropsWithChildren,
+  type ReactNode,
+  createElement,
+} from "react";
 
 const native = { tag: 1 };
 

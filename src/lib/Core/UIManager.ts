@@ -1,7 +1,16 @@
-/* eslint-disable sort-keys */
 import { noop } from "../../helpers/commons";
 
 export const UIManagerMock = {
+  AndroidDrawerLayout: {
+    Constants: {
+      DrawerPosition: {
+        Left: 10,
+      },
+    },
+  },
+  AndroidTextInput: {
+    Commands: { },
+  },
   AndroidViewPager: {
     Commands: {
       setPage: noop,
@@ -29,23 +38,13 @@ export const UIManagerMock = {
   hasViewManagerConfig: (name: string): boolean => {
     return name === "AndroidDrawerLayout";
   },
-  measure: noop,
   manageChildren: noop,
-  setChildren: noop,
-  updateView: noop,
-  AndroidDrawerLayout: {
-    Constants: {
-      DrawerPosition: {
-        Left: 10,
-      },
-    },
-  },
-  AndroidTextInput: {
-    Commands: { },
-  },
+  measure: noop,
   ScrollView: {
     Constants: { },
   },
+  setChildren: noop,
+  updateView: noop,
   View: {
     Constants: { },
   },

@@ -24,10 +24,11 @@ export type NativeBase =
   | "Text"
   | "View";
 
-export type NativeKey = NativeBase
+export type NativeKey =
   | "Image"
   | "ScrollView"
-  | "TextInput";
+  | "TextInput"
+  | NativeBase;
 
 const require = createRequire(import.meta.url);
 

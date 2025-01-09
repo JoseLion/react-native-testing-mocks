@@ -1,6 +1,6 @@
 import { name } from "../../package.json";
 
-import type { Environment } from "vitest";
+import type { Environment } from "vitest/environments";
 
 const reactNativeEnv: Environment = {
   name: "react-native",
