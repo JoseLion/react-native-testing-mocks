@@ -59,7 +59,10 @@ export const NativeModulesMock = {
   },
   ImageLoader: {
     getSize: () => Promise.resolve([320, 240]),
+    getSizeWithHeaders: () => Promise.resolve({ height: 222, width: 333 }),
     prefetchImage: noop,
+    prefetchImageWithMetadata: noop,
+    queryCache: noop,
   },
   ImageViewManager: {
     getSize: (_uri: string, success: CB) => process.nextTick(() => success(320, 240)),
@@ -68,6 +71,32 @@ export const NativeModulesMock = {
   KeyboardObserver: {
     addListener: noop,
     removeListeners: noop,
+  },
+  NativeAnimatedModule: {
+    addAnimatedEventToView: noop,
+    addListener: noop,
+    connectAnimatedNodes: noop,
+    connectAnimatedNodeToView: noop,
+    createAnimatedNode: noop,
+    disconnectAnimatedNodeFromView: noop,
+    disconnectAnimatedNodes: noop,
+    dropAnimatedNode: noop,
+    extractAnimatedNodeOffset: noop,
+    flattenAnimatedNodeOffset: noop,
+    getValue: noop,
+    removeAnimatedEventFromView: noop,
+    removeListener: noop,
+    removeListeners: noop,
+    restoreDefaultValues: noop,
+    setAnimatedNodeOffset: noop,
+    setAnimatedNodeValue: noop,
+    startAnimatingNode: (_animationId: unknown, _nodeTag: unknown, _config: unknown, endCallback: CB) => {
+      setTimeout(() => endCallback({ finished: true }), 16);
+    },
+    startListeningToAnimatedNodeValue: noop,
+    stopAnimation: noop,
+    stopListeningToAnimatedNodeValue: noop,
+    updateAnimatedNodeConfig: noop,
   },
   Networking: {
     abortRequest: noop,

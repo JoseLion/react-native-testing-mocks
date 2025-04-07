@@ -54,7 +54,7 @@ But what if you don't want to use Jest as your testing framework? What if you do
 - **react:** >=18.2.0
 - **react-native:** ">=0.73.2
 
-> **NOTE:** Node.js [enabled the `--experimental-detect-module` flag](https://github.com/nodejs/node/releases/tag/v22.7.0) on v22.7.0 by default. This raises an issue when transforming Flow code with Babel, so we're not supporting v22.7+ until the flag remains experimental and all issues are resolved.
+> **NOTE:** Node.js [enabled the `--experimental-detect-module` flag](https://github.com/nodejs/node/releases/tag/v22.7.0) on v22.7.0 by default. This raises an issue when Node finds Flow code before even getting into Babel transforms. If you are using Node.js v20 or higher, it's recommended that you run your tests with `NODE_OPTIONS="--no-experimental-detect-module"` environment variable.
 
 ## Install
 

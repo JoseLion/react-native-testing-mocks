@@ -20,7 +20,6 @@ export const nativeMethodsMock: NativeMethods = {
   measure: noop,
   measureInWindow: noop,
   measureLayout: noop,
-  refs: { },
   setNativeProps: noop,
 };
 

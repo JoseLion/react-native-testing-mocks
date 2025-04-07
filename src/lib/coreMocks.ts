@@ -11,9 +11,9 @@ Object.assign(global, { jest: { fn: () => noop } });
 
 replace("react-native/Libraries/Core/InitializeCore", () => ({ }));
 replace("react-native/Libraries/Core/NativeExceptionsManager", () => ({ }));
-replace("react-native/Libraries/ReactNative/UIManager", () => UIManagerMock);
-replace("react-native/Libraries/Linking/Linking", () => LinkingMock);
-replace("react-native/Libraries/BatchedBridge/NativeModules", () => NativeModulesMock);
+replace("react-native/Libraries/ReactNative/UIManager", () => ({ default: UIManagerMock }));
+replace("react-native/Libraries/Linking/Linking", () => ({ default: LinkingMock }));
+replace("react-native/Libraries/BatchedBridge/NativeModules", () => ({ default: NativeModulesMock }));
 replace("react-native/Libraries/NativeComponent/NativeComponentRegistry", () => NativeComponentRegistryMock);
 replace("react-native/Libraries/ReactNative/requireNativeComponent", () => ({ default: mockNativeComponent }));
 replace("react-native/Libraries/ReactNative/RendererProxy", () => RendererProxyMock);
