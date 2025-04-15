@@ -25,6 +25,7 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: yarn
+      - run: yarn install --immutable
       - uses: github/codeql-action/init@v3
         with:
           languages: javascript-typescript

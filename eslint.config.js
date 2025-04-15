@@ -28,7 +28,6 @@ export default eslintTs.config(
   sonarjs.configs.recommended,
   stylistic.configs.customize({
     braceStyle: "1tbs",
-    flat: true,
     quotes: "double",
     semi: true,
   }),
@@ -169,9 +168,6 @@ export default eslintTs.config(
       curly: "error",
       eqeqeq: "error",
       "func-style": ["error", "declaration", { allowArrowFunctions: true }],
-      "import/default": "off",
-      "import/named": "off",
-      "import/namespace": "off",
       "import/newline-after-import": "error",
       "import/no-absolute-path": "error",
       "import/no-cycle": ["error", {
@@ -181,7 +177,6 @@ export default eslintTs.config(
       }],
       "import/no-duplicates": ["error", { "prefer-inline": true }],
       "import/no-import-module-exports": "error",
-      "import/no-named-as-default-member": "off",
       "import/no-namespace": ["error", { ignore: ["eslint-plugin-import"] }],
       "import/no-relative-packages": "error",
       "import/no-unresolved": "error",
@@ -242,7 +237,6 @@ export default eslintTs.config(
       "sonarjs/different-types-comparison": "off",
       "sonarjs/function-return-type": "off",
       "sonarjs/no-duplicate-string": "off",
-      "sonarjs/no-empty-function": "off",
       "sonarjs/no-extend-native": "off",
       "sonarjs/no-nested-functions": "off",
       "sonarjs/no-selector-parameter": "off",

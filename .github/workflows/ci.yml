@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        nodejs: [18, 19, 20, 21, 22.6,]
+        nodejs: [18, 19, 20, 21, 22, 23]
 
     steps:
       - uses: actions/checkout@v4
@@ -27,4 +27,6 @@ jobs:
       - run: yarn build
       - run: yarn compile
       - run: yarn lint
-      - run: yarn test
+      - run: yarn test:ci
+        env:
+          NODE_OPTIONS: "${{ matrix.nodejs >= 20 && '--no-experimental-detect-module' }}"

@@ -20,18 +20,18 @@ import { ViewNativeComponentMock } from "./lib/Components/ViewNativeComponent";
 
 const libs = "react-native/Libraries";
 
-replace(`${libs}/Image/Image`, () => ImageMock);
-replace(`${libs}/Text/Text`, () => TextMock);
-replace(`${libs}/Components/TextInput/TextInput`, () => TextInputMock);
-replace(`${libs}/Modal/Modal`, () => ModalMock);
+replace(`${libs}/Image/Image`, () => ({ default: ImageMock }));
+replace(`${libs}/Text/Text`, () => ({ default: TextMock }));
+replace(`${libs}/Components/TextInput/TextInput`, () => ({ default: TextInputMock }));
+replace(`${libs}/Modal/Modal`, () => ({ default: ModalMock }));
 replace(`${libs}/Components/AccessibilityInfo/AccessibilityInfo`, () => ({ default: AccessibilityInfoMock }));
-replace(`${libs}/Components/Clipboard/Clipboard`, () => ClipboardMock);
-replace(`${libs}/Components/RefreshControl/RefreshControl`, () => RefreshControlMock);
-replace(`${libs}/Components/ScrollView/ScrollView`, () => ScrollViewMock);
+replace(`${libs}/Components/Clipboard/Clipboard`, () => ({ default: ClipboardMock }));
+replace(`${libs}/Components/RefreshControl/RefreshControl`, () => ({ default: RefreshControlMock }));
+replace(`${libs}/Components/ScrollView/ScrollView`, () => ({ default: ScrollViewMock }));
 replace(`${libs}/Components/ActivityIndicator/ActivityIndicator`, () => ({ default: ActivityIndicatorMock }));
-replace(`${libs}/AppState/AppState`, () => AppStateMock);
-replace(`${libs}/Vibration/Vibration`, () => VibrationMock);
-replace(`${libs}/Components/View/View`, () => ViewMock);
+replace(`${libs}/AppState/AppState`, () => ({ default: AppStateMock }));
+replace(`${libs}/Vibration/Vibration`, () => ({ default: VibrationMock }));
+replace(`${libs}/Components/View/View`, () => ({ default: ViewMock }));
 replace(`${libs}/Components/View/ViewNativeComponent`, () => ViewNativeComponentMock);
 replace(`${libs}/Animated/Animated`, () => ({ default: AnimatedMock }));
 
