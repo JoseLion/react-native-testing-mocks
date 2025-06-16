@@ -16,7 +16,9 @@ export function mockComponent<P, C extends ComponentClass<PropsWithChildren<P>>>
   RealComponent: C,
   instanceMethods?: AllNativeMethods,
 ): C {
-  const SuperClass: ComponentClass<PropsWithChildren<P>> = typeof RealComponent === "function"
+  const isFunction = typeof RealComponent === "function";
+  const isClass = get(RealComponent.prototype, "constructor") instanceof Component;
+  const SuperClass: ComponentClass<PropsWithChildren<P>> = isFunction && isClass
     ? RealComponent
     : Component;
   const name = (RealComponent.displayName ?? "")

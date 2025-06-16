@@ -1,7 +1,7 @@
 import { Animated } from "react-native";
 
 import { AnimatedValueMock } from "./AnimatedValueMock";
-import { AnimatedValueXYMock } from "./AnimatedValueXY";
+import { AnimatedValueXYMock } from "./AnimatedValueXYMock";
 
 export const AnimatedMock: typeof Animated = {
   ...Animated,
