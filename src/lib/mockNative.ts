@@ -65,7 +65,7 @@ export function mockNative(type: NativeKey, methods: Partial<AllNativeMethods | 
     .with("TextInput", () => mockComponent(Comp, Object.assign({ }, textInputMethodsMock, methods)))
     .otherwise(() => mockComponent(Comp, Object.assign({ }, nativeMethodsMock, methods)));
 
-  replace(path, () => type === "ActivityIndicator" ? { default: Mock } : Mock);
+  replace(path, () => ({ default: Mock }));
   MOCKS.add(type);
   logger.replace(`Native methods mocks assigned to ${type}.`);
 }
@@ -84,7 +84,7 @@ export function restoreNativeMocks(): void {
       .with("TextInput", () => mockComponent(Comp, textInputMethodsMock))
       .otherwise(() => mockComponent(Comp, nativeMethodsMock));
 
-    replace(path, () => type === "ActivityIndicator" ? { default: Mock } : Mock);
+    replace(path, () => ({ default: Mock }));
   });
 
   MOCKS.clear();
